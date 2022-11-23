@@ -1,0 +1,78 @@
+import { useProduct } from "hooks/products";
+import { Subtitle, LargeText, BodyText, TinyText } from "ui/texts";
+import { ProductDetailRoot, TitleAndPriceCont, ImgCont } from "./style";
+import { LoaderBig } from "ui/loader";
+import Head from "next/head";
+import { SecondaryButton } from "ui/buttons";
+
+export function ProductDetail({ productID }: any) {
+	const product = useProduct(productID);
+	console.log(productID);
+	console.log(product);
+
+	return (
+		<div>
+			{product ? (
+				product.error ? (
+					<div>Ups! Hubo un error</div>
+				) : (
+					<ProductDetailRoot>
+						<Head>
+							<title>Producto: {product.title}</title>
+						</Head>
+						<ImgCont>
+							<img
+								style={{ width: "100%", height: "100%" }}
+								src={product.image}
+								alt={`imagen de ${product.title}`}
+							/>
+						</ImgCont>
+						<TitleAndPriceCont>
+							<div>
+								<Subtitle>{product.title}</Subtitle>
+								<br />
+								<LargeText>$ {product["unit_cost"]}</LargeText>
+								<br />
+								<SecondaryButton> Comprar </SecondaryButton>
+								<br />
+								<br />
+								<TinyText>Stock:{product.stock}</TinyText>
+							</div>
+							<div>
+								<BodyText>{product.description}</BodyText>
+							</div>
+						</TitleAndPriceCont>
+					</ProductDetailRoot>
+				)
+			) : (
+				<div
+					style={{
+						height: "70vh",
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
+					<LoaderBig />
+				</div>
+			)}
+		</div>
+	);
+}
+
+{
+	/* <div>
+<img src={imageUrl} alt={`imagen de ${title}`} />
+</div>
+<div>
+contenedor precio y titulo
+<div>
+   <Subtitle>{title}</Subtitle>
+   <LargeText>$ {price}</LargeText>
+</div>
+<div>
+   <BodyText>{description}</BodyText>
+</div>
+</div> */
+}
