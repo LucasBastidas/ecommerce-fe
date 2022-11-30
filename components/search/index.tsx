@@ -15,14 +15,12 @@ export function SearchProductComponent() {
 	return (
 		<SearchProductRoot>
 			<form onSubmit={handleForm}>
-				<div style={{ display: "flex", paddingBottom: "10px" }}>
-					<LargeTextBold>Busca tu producto</LargeTextBold>
-				</div>
 				<InputButtonCont>
 					<InputSmall
 						maxLength={20}
 						type="search"
 						name="query"
+						placeholder="Silla..."
 						required
 					></InputSmall>
 					<PrimaryButton>Buscar</PrimaryButton>

@@ -4,14 +4,24 @@ import { ProductDetailRoot, TitleAndPriceCont, ImgCont } from "./style";
 import { LoaderBig } from "ui/loader";
 import Head from "next/head";
 import { SecondaryButton } from "ui/buttons";
+import { SearchProductComponent } from "components/search";
+import { useRouter } from "next/router";
 
 export function ProductDetail({ productID }: any) {
+	const router = useRouter();
 	const product = useProduct(productID);
 	console.log(productID);
 	console.log(product);
 
+	function handleBuyButton() {
+		router.push(`/checkout/${productID}`);
+	}
+
 	return (
 		<div>
+			<div style={{ paddingTop: "120px" }}>
+				<SearchProductComponent></SearchProductComponent>
+			</div>
 			{product ? (
 				product.error ? (
 					<div>Ups! Hubo un error</div>
@@ -33,7 +43,10 @@ export function ProductDetail({ productID }: any) {
 								<br />
 								<LargeText>$ {product["unit_cost"]}</LargeText>
 								<br />
-								<SecondaryButton> Comprar </SecondaryButton>
+								<SecondaryButton onClick={handleBuyButton}>
+									{" "}
+									Comprar{" "}
+								</SecondaryButton>
 								<br />
 								<br />
 								<TinyText>Stock:{product.stock}</TinyText>

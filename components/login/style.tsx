@@ -17,3 +17,10 @@ export const FormRoot = styled.div`
 	align-items: center;
 	gap: 10px;
 `;
+
+export const LoaderCont = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;

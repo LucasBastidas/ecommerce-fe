@@ -1,13 +1,52 @@
-import { HomeRoot } from "./styled";
-import { PrincipalTitle } from "ui/texts";
+import { HomeRoot, ProductsCont } from "./styled";
+import { PrincipalTitle, Subtitle } from "ui/texts";
+import { SearchProductComponent } from "components/search";
+import { useDestacados } from "hooks/products";
+import { ProductCardComp } from "components/product-card";
+import { LoaderBig } from "ui/loader";
+
 export function HomeComponent() {
+	const products = useDestacados();
 	return (
-		<HomeRoot>
-			<section>
-				<PrincipalTitle style={{ color: "var(--azul-oscuro)" }}>
-					Gran tienda
-				</PrincipalTitle>
-			</section>
-		</HomeRoot>
+		<>
+			<div style={{ paddingTop: "120px" }}>
+				<SearchProductComponent></SearchProductComponent>
+			</div>
+			<HomeRoot>
+				<section>
+					<PrincipalTitle>Gran tienda</PrincipalTitle>
+				</section>
+				<br />
+				<br />
+				<ProductsCont>
+					<Subtitle>Productos Destacados</Subtitle>
+					{products ? (
+						products.map((r: any) => {
+							return (
+								<ProductCardComp
+									key={r.objectID}
+									title={r.title}
+									price={r["unit-cost"]}
+									imageUrl={r.images[0].url}
+									productID={r.objectID}
+									stock={r.stock}
+								></ProductCardComp>
+							);
+						})
+					) : (
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "center",
+								justifyContent: "center",
+							}}
+						>
+							<LoaderBig></LoaderBig>
+						</div>
+					)}
+				</ProductsCont>
+			</HomeRoot>
+		</>
 	);
 }

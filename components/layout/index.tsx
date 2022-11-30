@@ -8,9 +8,6 @@ export function LayoutComp({ children }: any) {
 	return (
 		<LayoutRoot>
 			<HeaderComp></HeaderComp>
-			<div style={{ paddingTop: "120px" }}>
-				<SearchProductComponent></SearchProductComponent>
-			</div>
 			{children}
 			<FooterComp></FooterComp>
 		</LayoutRoot>

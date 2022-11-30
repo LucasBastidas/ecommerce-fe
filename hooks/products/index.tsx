@@ -30,3 +30,23 @@ export function useProduct(productId: string) {
 	}
 	return data?.productData;
 }
+
+export function useDestacados() {
+	const { data, error } = useSWRImmutable(`/search?&limit=3`, fetchAPI);
+	if (error) {
+		console.log(error);
+	}
+	console.log(data);
+
+	return data?.results;
+}
+
+// export function useDestacados() {
+// 	const { data, error } = useSWRImmutable("/api/destacados", fetch);
+// 	if (error) {
+// 		return { error: "no encontrado" };
+// 	}
+// 	console.log("Soydata: ", data);
+
+// 	return data;
+// }

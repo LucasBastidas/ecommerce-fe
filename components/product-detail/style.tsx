@@ -8,7 +8,8 @@ export const ProductDetailRoot = styled.div`
 	height: 80vh;
 	padding: 0 50px;
 	justify-content: center;
-	@media (min-width: 720px) {
+	align-items: center;
+	@media (min-width: 1280px) {
 		flex-direction: row;
 		gap: 40px;
 		align-items: center;
@@ -27,7 +28,7 @@ export const ImgCont = styled.div`
 	margin: 0 auto;
 	width: 250px;
 	height: 200px;
-	@media (min-width: 720px) {
+	@media (min-width: 1280px) {
 		width: 400px;
 		height: 350px;
 	}

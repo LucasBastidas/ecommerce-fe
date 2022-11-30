@@ -6,7 +6,7 @@ export const MenuIcon = styled(Hamburger)`
 	width: 50px;
 	stroke: var(--celeste-claro);
 	cursor: pointer;
-	@media (min-width: 720px) {
+	@media (min-width: 1280px) {
 		display: none;
 	}
 `;

@@ -4,14 +4,15 @@ export const InputSmall = styled.input`
 	padding: 10px 30px;
 	border: none;
 	border-radius: 15px;
-	@media (min-width: 720px) {
+	width: 100%;
+	@media (min-width: 1280px) {
 		padding: 10px 60px;
 	}
 `;
 
 export const InputBig = styled(InputSmall)`
 	padding: 20px 50px;
-	@media (min-width: 720px) {
+	@media (min-width: 1280px) {
 		padding: 20px 60px;
 	}
 `;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const PrincipalTitle = styled.h1`
 	font-size: 48px;
 	font-weight: bold;
+	cursor: default;
+	color: var(--azul-oscuro);
 `;
 
 export const Subtitle = styled(PrincipalTitle).attrs({

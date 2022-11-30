@@ -3,6 +3,7 @@ import { useSearch } from "hooks/products";
 import { useRouter } from "next/router";
 import { ProductListRoot, ProductListCont } from "./styled";
 import { LoaderBig } from "ui/loader";
+import { SearchProductComponent } from "components/search";
 
 export function ProductListComponent({ productQuery }: any) {
 	const router = useRouter();
@@ -10,31 +11,34 @@ export function ProductListComponent({ productQuery }: any) {
 	console.log(results);
 
 	return (
-		<ProductListRoot>
-			{results ? (
-				results.length > 0 ? (
-					<ProductListCont>
-						{results.map((r: any) => {
-							return (
-								<ProductCardComp
-									title={r.title}
-									price={r["unit-cost"]}
-									imageUrl={r.images[0].thumbnails.full.url}
-									productID={r.objectID}
-									stock={r.stock}
-									key={r.objectID}
-								/>
-							);
-						})}
-					</ProductListCont>
+		<div style={{ paddingTop: "var(--padding-top-search-products)" }}>
+			<SearchProductComponent />
+			<ProductListRoot>
+				{results ? (
+					results.length > 0 ? (
+						<ProductListCont>
+							{results.map((r: any) => {
+								return (
+									<ProductCardComp
+										title={r.title}
+										price={r["unit-cost"]}
+										imageUrl={r.images[0].thumbnails.full.url}
+										productID={r.objectID}
+										stock={r.stock}
+										key={r.objectID}
+									/>
+								);
+							})}
+						</ProductListCont>
+					) : (
+						<div>No hay resultados</div>
+					)
 				) : (
-					<div>No hay resultados</div>
-				)
-			) : (
-				<div>
-					<LoaderBig />
-				</div>
-			)}
-		</ProductListRoot>
+					<div>
+						<LoaderBig />
+					</div>
+				)}
+			</ProductListRoot>
+		</div>
 	);
 }

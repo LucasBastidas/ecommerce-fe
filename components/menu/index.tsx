@@ -1,41 +1,120 @@
-import { TextButton } from "ui/buttons";
+import { TextButton, AlternativeButton } from "ui/buttons";
 import { LargeText } from "ui/texts";
-import { LogoutButton } from "./styled";
+import {
+	LogoutButton,
+	StyledMenuDesktopRoot,
+	LogoutButtonCont,
+} from "./styled";
 import Link from "next/link";
-
 import styled from "styled-components";
+import { useMe, closeSesion } from "hooks/me";
+import { useEffect, useState } from "react";
 
-export function Menu({ display }: any) {
+export function Menu({ display, closeMenu }: any) {
 	const StyledMenuRoot = styled.div`
 		background-color: var(--azul-verdoso);
 		color: white;
 		display: ${display};
 		flex-direction: column;
 		align-items: center;
-		position: absolute;
+		position: fixed;
 		top: 120px;
 		width: 100%;
 		height: calc(100vh - 120px);
 		padding-top: 10%;
 		justify-content: space-between;
 	`;
+	const [token, setToken] = useState("");
+	const [logged, setLogged] = useState(false);
+	var myData = useMe();
+
+	useEffect(() => {
+		if (myData) {
+			console.log("estoy logeado");
+			setLogged(true);
+		} else {
+			setLogged(false);
+		}
+	}, [myData]);
+
+	console.log({ myData });
+
+	function handleCloseSesion() {
+		closeSesion(() => {
+			myData = null;
+			alert("Cerraste sesion");
+		});
+	}
+
 	return (
 		<StyledMenuRoot>
 			<div>
-				<Link href={"/signin"}>
-					<TextButton>Ingresar</TextButton>
-				</Link>
+				<div style={logged ? { display: "none" } : { display: "initial" }}>
+					<Link href="/signin">
+						<TextButton>Ingresar</TextButton>
+					</Link>
+				</div>
 				<br />
 				<TextButton>Buscar</TextButton>
 				<br />
-				<TextButton>Inicio</TextButton>
+				<Link onClick={closeMenu} href={"/"}>
+					<TextButton>Inicio</TextButton>
+				</Link>
 				<br />
-				<TextButton>Ingresar</TextButton>
+				<div style={logged ? { display: "initial" } : { display: "none" }}>
+					<Link href="/profile">
+						<TextButton>Mi perfil</TextButton>
+					</Link>
+				</div>
 			</div>
-			<div>
-				<LargeText color="white">miemail@mail.com</LargeText>
-				<LogoutButton>Cerrar sesión</LogoutButton>
+			<div style={logged ? { display: "block" } : { display: "none" }}>
+				<LargeText color="white">{myData?.email}</LargeText>
+				<LogoutButton onClick={handleCloseSesion}>Cerrar sesión</LogoutButton>
 			</div>
 		</StyledMenuRoot>
+	);
+}
+
+export function MenuDesktop() {
+	const [token, setToken] = useState("");
+	const [logged, setLogged] = useState(false);
+	var myData = useMe();
+
+	useEffect(() => {
+		if (myData) {
+			console.log("SOY MENU DESKTOP");
+			setLogged(true);
+		} else {
+			setLogged(false);
+		}
+	}, [myData]);
+
+	console.log({ myData });
+
+	function handleCloseSesion() {
+		closeSesion(() => {
+			myData = null;
+			alert("Cerraste sesion");
+		});
+	}
+
+	return (
+		<StyledMenuDesktopRoot>
+			<div style={logged ? { display: "none" } : { display: "initial" }}>
+				<Link href="/signin">
+					<AlternativeButton>Ingresar</AlternativeButton>
+				</Link>
+			</div>
+			<div style={logged ? { display: "block" } : { display: "none" }}>
+				<div style={{ backgroundColor: "var(--celeste-claro)" }}>
+					<Link href="/profile">
+						<LargeText>{myData?.email}</LargeText>
+					</Link>
+				</div>
+				<LogoutButtonCont>
+					<LogoutButton onClick={handleCloseSesion}>Cerrar sesión</LogoutButton>
+				</LogoutButtonCont>
+			</div>
+		</StyledMenuDesktopRoot>
 	);
 }

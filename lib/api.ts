@@ -2,9 +2,10 @@ import useSWR from "swr";
 
 const URL_BASE = "https://ecommerce-be-weld.vercel.app/api";
 
+//GET
 export async function fetchAPI(input: RequestInfo, options: RequestInit) {
 	//el input lo envia directamente la key de SWR
-	console.log({ input });
+	// console.log({ input });
 
 	const url = URL_BASE + input;
 	const token = localStorage.getItem("token");
@@ -33,6 +34,10 @@ export function getTokenOfLocalStorage() {
 	return localStorage.getItem("token");
 }
 
+export function deleteTokenOfLocalStorage() {
+	return localStorage.removeItem("token");
+}
+
 export async function sendCode(email: string) {
 	const codeSended = await fetch(URL_BASE + "/auth", {
 		method: "POST",
@@ -57,7 +62,7 @@ export async function sendCode(email: string) {
 }
 
 export async function getToken(email: string, code: string) {
-	const res = await fetch(URL_BASE + "/auth/token", {
+	const res = await fetch(`${URL_BASE}/auth/token`, {
 		method: "POST",
 		mode: "cors",
 		headers: {
@@ -82,5 +87,57 @@ export async function getToken(email: string, code: string) {
 		};
 	} else {
 		throw { message: "Error, algo salío mal", status: res.status };
+	}
+}
+
+export type MyData = {
+	name: string;
+	tel: any;
+	address: {
+		provincia: string;
+		ciudad: string;
+		direccion: {
+			calle: string;
+			altura: number;
+		};
+	};
+};
+
+export async function udpateOrConfirmMyData(params: MyData) {
+	const token = getTokenOfLocalStorage();
+	const res = await fetch(`${URL_BASE}/me`, {
+		method: "PATCH",
+		mode: "cors",
+		headers: {
+			"Content-type": "application/json",
+			authorization: `bearer ${token}`,
+		},
+		body: JSON.stringify({
+			name: params.name,
+			tel: parseInt(params.tel, 10),
+			address: params.address,
+		}),
+	});
+	if (res.status >= 200 && res.status < 300) {
+		return res.json();
+	} else {
+		throw { message: "algo salío mal", status: res.status };
+	}
+}
+
+export async function createOrder(productId: string) {
+	const token = getTokenOfLocalStorage();
+	const res = await fetch(`${URL_BASE}/order?productId=${productId}`, {
+		method: "POST",
+		mode: "cors",
+		headers: {
+			"Content-type": "application/json",
+			authorization: `bearer ${token}`,
+		},
+	});
+	if (res.status >= 200 && res.status < 300) {
+		return res.json();
+	} else {
+		throw { message: "algo salío mal", status: res.status };
 	}
 }

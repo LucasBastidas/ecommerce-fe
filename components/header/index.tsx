@@ -1,6 +1,6 @@
 import { HeaderRoot, ActiveOrInactiveMenu } from "./styled";
 import { LogoCompleto, MenuIcon } from "ui/icons";
-import { Menu } from "components/menu";
+import { Menu, MenuDesktop } from "components/menu";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -21,14 +21,24 @@ export function HeaderComp() {
 	return (
 		<div>
 			<HeaderRoot>
-				<div onClick={handleLogoButton}>
-					<LogoCompleto />
+				<div>
+					<LogoCompleto onClick={handleLogoButton}></LogoCompleto>
 				</div>
 				<div>
 					<MenuIcon onClick={handleButtonMenu}></MenuIcon>
+					<MenuDesktop />
 				</div>
 			</HeaderRoot>
-			{activeMenu ? <Menu display="flex"></Menu> : <Menu display="none"></Menu>}
+			{activeMenu ? (
+				<Menu
+					closeMenu={() => {
+						setActiveMenu(false);
+					}}
+					display="flex"
+				></Menu>
+			) : (
+				<Menu display="none"></Menu>
+			)}
 		</div>
 	);
 }
