@@ -6,9 +6,9 @@ import { LoaderBig } from "ui/loader";
 import { PrincipalTitle, Subtitle } from "ui/texts";
 import { CheckoutRoot, FormCont, AbsoluteLoader } from "./style";
 import { useForm } from "react-hook-form";
-import { useUpdateOrConfirmMyData } from "hooks/me";
+import { useMe, useUpdateOrConfirmMyData } from "hooks/me";
 import { useCreateOrder } from "hooks/order";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createOrder, udpateOrConfirmMyData } from "lib/api";
 
 export function CheckoutComp() {
@@ -16,6 +16,13 @@ export function CheckoutComp() {
 	const productId = router.query.itemId as string;
 	const product = useProduct(productId);
 	const [activeLoader, setActiveLoader] = useState(false);
+	var myData = useMe();
+
+	useEffect(() => {
+		if (myData == null) {
+			router.push("/");
+		}
+	}, [myData]);
 
 	const {
 		register,

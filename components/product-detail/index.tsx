@@ -6,15 +6,20 @@ import Head from "next/head";
 import { SecondaryButton } from "ui/buttons";
 import { SearchProductComponent } from "components/search";
 import { useRouter } from "next/router";
+import { useMe } from "hooks/me";
 
 export function ProductDetail({ productID }: any) {
 	const router = useRouter();
 	const product = useProduct(productID);
 	console.log(productID);
 	console.log(product);
-
+	var myData = useMe();
 	function handleBuyButton() {
-		router.push(`/checkout/${productID}`);
+		if (myData != null) {
+			router.push(`/checkout/${productID}`);
+		} else {
+			router.push(`/signin`);
+		}
 	}
 
 	return (
