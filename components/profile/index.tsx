@@ -5,6 +5,7 @@ import { ProfileRoot, RootGral } from "./style";
 import { useForm } from "react-hook-form";
 import { LoaderBig } from "ui/loader";
 import { MyDataForm } from "components/forms";
+import { udpateOrConfirmMyData } from "lib/api";
 
 export function ProfileComp() {
 	var myData = useMe();
@@ -31,7 +32,7 @@ export function ProfileComp() {
 			},
 		};
 
-		useUpdateOrConfirmMyData(cleanData).then((r) => {
+		udpateOrConfirmMyData(cleanData).then((r) => {
 			if (r == null) {
 				alert("Se produjo un error, intentalo mas tarde");
 				//te llevo a la home

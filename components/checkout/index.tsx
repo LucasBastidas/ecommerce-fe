@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useUpdateOrConfirmMyData } from "hooks/me";
 import { useCreateOrder } from "hooks/order";
 import { useState } from "react";
+import { createOrder, udpateOrConfirmMyData } from "lib/api";
 
 export function CheckoutComp() {
 	const router = useRouter();
@@ -37,13 +38,13 @@ export function CheckoutComp() {
 			},
 		};
 		setActiveLoader(true);
-		useUpdateOrConfirmMyData(cleanData).then((r) => {
+		udpateOrConfirmMyData(cleanData).then((r) => {
 			if (r == null) {
 				alert("Se produjo un error, intentalo mas tarde");
 				//te llevo a la home
 			} else {
 				alert("ok");
-				useCreateOrder(productId).then((r) => {
+				createOrder(productId).then((r) => {
 					if (r == null) {
 						alert("Se produjo un error, intentalo mas tarde");
 						setActiveLoader(false);
