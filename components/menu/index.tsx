@@ -7,8 +7,9 @@ import {
 } from "./styled";
 import Link from "next/link";
 import styled from "styled-components";
-import { useMe, closeSesion } from "hooks/me";
+import { useMe } from "hooks/me";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export function Menu({ display, closeMenu }: any) {
 	const StyledMenuRoot = styled.div`
@@ -26,6 +27,7 @@ export function Menu({ display, closeMenu }: any) {
 	`;
 	const [token, setToken] = useState("");
 	const [logged, setLogged] = useState(false);
+	const router = useRouter();
 	var myData = useMe();
 
 	useEffect(() => {
@@ -40,10 +42,7 @@ export function Menu({ display, closeMenu }: any) {
 	console.log({ myData });
 
 	function handleCloseSesion() {
-		closeSesion(() => {
-			myData = null;
-			alert("Cerraste sesion");
-		});
+		router.push("/logout");
 	}
 
 	return (
@@ -55,7 +54,9 @@ export function Menu({ display, closeMenu }: any) {
 					</Link>
 				</div>
 				<br />
-				<TextButton>Buscar</TextButton>
+				<Link href="/">
+					<TextButton>Buscar</TextButton>
+				</Link>
 				<br />
 				<Link onClick={closeMenu} href={"/"}>
 					<TextButton>Inicio</TextButton>
@@ -76,9 +77,9 @@ export function Menu({ display, closeMenu }: any) {
 }
 
 export function MenuDesktop() {
-	const [token, setToken] = useState("");
 	const [logged, setLogged] = useState(false);
 	var myData = useMe();
+	const router = useRouter();
 
 	useEffect(() => {
 		if (myData) {
@@ -92,10 +93,7 @@ export function MenuDesktop() {
 	console.log({ myData });
 
 	function handleCloseSesion() {
-		closeSesion(() => {
-			myData = null;
-			alert("Cerraste sesion");
-		});
+		router.push("/logout");
 	}
 
 	return (

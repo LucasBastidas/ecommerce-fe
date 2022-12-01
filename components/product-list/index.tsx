@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { ProductListRoot, ProductListCont } from "./styled";
 import { LoaderBig } from "ui/loader";
 import { SearchProductComponent } from "components/search";
+import Head from "next/head";
 
 export function ProductListComponent({ productQuery }: any) {
 	const router = useRouter();
@@ -12,6 +13,9 @@ export function ProductListComponent({ productQuery }: any) {
 
 	return (
 		<div style={{ paddingTop: "var(--padding-top-search-products)" }}>
+			<Head>
+				<title>Busqueda: {productQuery}</title>
+			</Head>
 			<SearchProductComponent />
 			<ProductListRoot>
 				{results ? (

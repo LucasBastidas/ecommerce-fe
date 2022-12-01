@@ -14,6 +14,7 @@ export default function Document() {
 					href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
 					rel="stylesheet"
 				/>
+				<link rel="icon" href="/shopping-cart.svg" type="image/icon type" />
 			</Head>
 			<body>
 				<Main />

@@ -33,3 +33,19 @@ export const ImgCont = styled.div`
 		height: 350px;
 	}
 `;
+
+export const PopUpWindowRoot = styled.div`
+	display: flex;
+	color: white;
+	text-align: "center";
+	flex-direction: column;
+	align-items: center;
+	gap: 40px;
+	background-color: #1670bee8;
+	justify-content: center;
+	position: fixed;
+	top: 40%;
+	height: 50vh;
+	width: 100%;
+	padding: 0 25px;
+`;

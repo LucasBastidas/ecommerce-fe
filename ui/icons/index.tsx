@@ -1,6 +1,9 @@
 import Hamburger from "public/menu.svg";
 import styled from "styled-components";
 import CarritoSVG from "public/shopping-cart.svg";
+import Facebook from "public/facebook.svg";
+import Twitter from "public/twitter.svg";
+import Instagram from "public/instagram.svg";
 
 export const MenuIcon = styled(Hamburger)`
 	width: 50px;
@@ -40,3 +43,20 @@ export function LogoCompleto({ onClick }: any) {
 		</LogoCompletoRoot>
 	);
 }
+
+export const FacebookLogo = styled(Facebook)`
+	width: 15px;
+	height: 15px;
+	stroke: var(--celeste-claro);
+`;
+
+export const TwitterLogo = styled(Twitter)`
+	width: 15px;
+	height: 15px;
+	stroke: var(--celeste-claro);
+`;
+export const InstagramLogo = styled(Instagram)`
+	width: 15px;
+	height: 15px;
+	stroke: var(--celeste-claro);
+`;

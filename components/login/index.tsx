@@ -6,6 +6,7 @@ import { sendCode, getToken } from "lib/api";
 import { useRouter } from "next/router";
 import { LoaderSmall } from "ui/loader";
 import { useMe } from "hooks/me";
+import Head from "next/head";
 export function LoginComp() {
 	const [email, setEmail] = useState("");
 	const [activeCodeForm, setActiveCodeForm] = useState(false);
@@ -57,6 +58,9 @@ export function LoginComp() {
 
 	return (
 		<LoginRoot>
+			<Head>
+				<title>Iniciar Sesión</title>
+			</Head>
 			<div style={activeCodeForm ? { display: "none" } : { display: "block" }}>
 				<form onSubmit={handleEmailForm}>
 					<FormRoot>

@@ -7,7 +7,7 @@ export const SearchProductRoot = styled.div`
 	width: 100%;
 	height: 100px;
 	align-items: center;
-	border: solid;
+	border: solid 3px var(--azul-oscuro);
 	justify-content: center;
 	padding-top: 320x;
 	padding-bottom: 10px;

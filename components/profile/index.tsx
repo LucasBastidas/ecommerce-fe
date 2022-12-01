@@ -1,4 +1,4 @@
-import { useMe, useUpdateOrConfirmMyData } from "hooks/me";
+import { useMe } from "hooks/me";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ProfileRoot, RootGral } from "./style";
@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import { LoaderBig } from "ui/loader";
 import { MyDataForm } from "components/forms";
 import { udpateOrConfirmMyData } from "lib/api";
+import { PrimaryButton } from "ui/buttons";
+import { Subtitle } from "ui/texts";
+import Head from "next/head";
 
 export function ProfileComp() {
 	var myData = useMe();
@@ -41,21 +44,34 @@ export function ProfileComp() {
 			}
 		});
 	};
-	// ;
-	// opacity: "0.8";
-	// backgroundImage: "radial-gradient(
-	// 	var(--azul-oscuro) 2px,
-	// 	var(--celeste-claro) 2px
-	// )";}
+	function handleSignInButton() {
+		router.push("/signin");
+	}
+
 	return (
 		<RootGral>
+			<Head>
+				<title>Tu perfil</title>
+			</Head>
 			<ProfileRoot>
-				{myData == undefined ? (
+				{myData == null ? (
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							gap: "25px",
+						}}
+					>
+						<Subtitle>No estas logeado</Subtitle>
+						<PrimaryButton onClick={handleSignInButton}>
+							Iniciar Sesión
+						</PrimaryButton>
+					</div>
+				) : myData == undefined ? (
 					<div>
 						<LoaderBig />
 					</div>
-				) : myData == null ? (
-					<div>No estas Logeado</div>
 				) : (
 					<div>
 						<MyDataForm onSubmit={onSubmit} />

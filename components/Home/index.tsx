@@ -19,7 +19,9 @@ export function HomeComponent() {
 				<br />
 				<br />
 				<ProductsCont>
-					<Subtitle>Productos Destacados</Subtitle>
+					<div style={{ textAlign: "center" }}>
+						<Subtitle>Productos Destacados</Subtitle>
+					</div>
 					{products ? (
 						products.map((r: any) => {
 							return (

@@ -1,3 +1,9 @@
+import { ThanksComp } from "components/thanks";
+
 export default function Thanks() {
-	return <div>GRACIAS POR COMPRAR, VUELVA PRONTO</div>;
+	return (
+		<div>
+			<ThanksComp />
+		</div>
+	);
 }

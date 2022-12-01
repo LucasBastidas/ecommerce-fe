@@ -5,4 +5,14 @@ export const FooterRoot = styled.footer`
 	height: 220px;
 	display: flex;
 	background-color: var(--azul-oscuro);
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 25px;
+	color: var(--celeste-claro);
+`;
+
+export const CopyRightCont = styled.div`
+	color: var(--celeste-claro);
+	display: flex;
 `;

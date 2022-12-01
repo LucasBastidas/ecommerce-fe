@@ -9,6 +9,7 @@ export const HomeRoot = styled.div`
 	width: 100%;
 	background-color: var(--celeste-claro);
 	padding-top: 120px;
+	color: var(--azul-oscuro);
 `;
 
 export const ProductsCont = styled.section`
@@ -17,4 +18,5 @@ export const ProductsCont = styled.section`
 	justify-content: center;
 	align-items: center;
 	gap: 15px;
+	padding-bottom: 25px;
 `;

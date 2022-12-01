@@ -2,7 +2,7 @@ import { MyDataForm } from "components/forms";
 import { ProductCheckoutCard } from "components/product-checkout-card";
 import { useProduct } from "hooks/products";
 import { useRouter } from "next/router";
-import { LoaderBig } from "ui/loader";
+import { LoaderBig, LoaderSmall } from "ui/loader";
 import { PrincipalTitle, Subtitle } from "ui/texts";
 import { CheckoutRoot, FormCont, AbsoluteLoader } from "./style";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import { useMe, useUpdateOrConfirmMyData } from "hooks/me";
 import { useCreateOrder } from "hooks/order";
 import { useEffect, useState } from "react";
 import { createOrder, udpateOrConfirmMyData } from "lib/api";
+import Head from "next/head";
 
 export function CheckoutComp() {
 	const router = useRouter();
@@ -50,13 +51,11 @@ export function CheckoutComp() {
 				alert("Se produjo un error, intentalo mas tarde");
 				//te llevo a la home
 			} else {
-				alert("ok");
 				createOrder(productId).then((r) => {
 					if (r == null) {
 						alert("Se produjo un error, intentalo mas tarde");
 						setActiveLoader(false);
 					} else {
-						console.log(r);
 						router.push(r.url);
 						setActiveLoader(false);
 					}
@@ -69,9 +68,17 @@ export function CheckoutComp() {
 		<CheckoutRoot>
 			{product ? (
 				product.error ? (
-					<div>Ups! Hubo un error</div>
+					<div>
+						<Head>
+							<title>Error</title>
+						</Head>
+						Ups! Hubo un error
+					</div>
 				) : (
 					<div style={{ width: "100%" }}>
+						<Head>
+							<title>Checkout</title>
+						</Head>
 						<div
 							style={
 								activeLoader ? { display: "initial" } : { display: "none" }
