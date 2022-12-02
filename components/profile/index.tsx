@@ -40,7 +40,7 @@ export function ProfileComp() {
 				alert("Se produjo un error, intentalo mas tarde");
 				//te llevo a la home
 			} else {
-				alert("ok");
+				alert("Hecho");
 			}
 		});
 	};

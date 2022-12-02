@@ -144,7 +144,7 @@ export function MyDataForm({ onSubmit }: any) {
 						}}
 					>
 						<div>
-							<LargeText>Callé</LargeText>
+							<LargeText>Calle</LargeText>
 							<InputSmall
 								defaultValue={myData?.address?.direccion?.calle || ""}
 								type="text"
@@ -168,7 +168,7 @@ export function MyDataForm({ onSubmit }: any) {
 						<div>
 							<LargeText>Altura</LargeText>
 							<InputSmall
-								defaultValue={myData?.address.direccion.altura || ""}
+								defaultValue={myData?.address?.direccion?.altura || ""}
 								type="number"
 								{...register("altura", {
 									required: true,
