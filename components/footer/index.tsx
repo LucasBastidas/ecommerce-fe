@@ -32,6 +32,7 @@ export function FooterComp() {
 						style={{ color: "var(--celeste-claro)" }}
 						target="_blank"
 						href="https://lucasbastidas.github.io/my-portfolio/"
+						rel="noopener noreferrer"
 					>
 						@LucasBastidas
 					</a>

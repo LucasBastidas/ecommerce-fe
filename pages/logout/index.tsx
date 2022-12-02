@@ -1,11 +1,14 @@
 import { closeSesion } from "hooks/me";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { LoaderBig } from "ui/loader";
 
 export default function Logout() {
 	const router = useRouter();
-	closeSesion(() => {
-		router.push("/");
+	useEffect(() => {
+		closeSesion(() => {
+			router.push("/");
+		});
 	});
 
 	return (

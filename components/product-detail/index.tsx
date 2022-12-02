@@ -79,10 +79,18 @@ export function ProductDetail({ productID }: any) {
 								<br />
 								<LargeText>$ {product["unit_cost"]}</LargeText>
 								<br />
-								<SecondaryButton onClick={handleBuyButton}>
-									{" "}
-									Comprar{" "}
-								</SecondaryButton>
+								<div
+									style={
+										product.stock > 0
+											? { display: "block" }
+											: { display: "none" }
+									}
+								>
+									<SecondaryButton onClick={handleBuyButton}>
+										{" "}
+										Comprar{" "}
+									</SecondaryButton>
+								</div>
 								<br />
 								<br />
 								<TinyText>Stock:{product.stock}</TinyText>

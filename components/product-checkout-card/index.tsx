@@ -1,5 +1,6 @@
 import { LargeText, TinyText, BodyTextBold, BodyText } from "ui/texts";
 import { ProductCheckoutRoot, ImageCont, TitlePriceCont } from "./style";
+
 export function ProductCheckoutCard({ img, title, price }: any) {
 	return (
 		<ProductCheckoutRoot>
