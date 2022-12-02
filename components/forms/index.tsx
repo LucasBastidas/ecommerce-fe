@@ -78,7 +78,7 @@ export function MyDataForm({ onSubmit }: any) {
 							<LargeText>Numero de teléfono</LargeText>
 							<InputSmall
 								type="number"
-								defaultValue={myData?.telephone_number}
+								defaultValue={myData?.telephone_number || ""}
 								{...register("numero_telefono", {
 									required: true,
 									maxLength: 13,
@@ -102,7 +102,7 @@ export function MyDataForm({ onSubmit }: any) {
 						<div>
 							<LargeText>Provincia</LargeText>
 							<InputSmall
-								defaultValue={myData?.address.provincia}
+								defaultValue={myData?.address?.provincia || ""}
 								type="text"
 								{...register("provincia", {
 									required: "Error with province",
@@ -124,7 +124,7 @@ export function MyDataForm({ onSubmit }: any) {
 						<div>
 							<LargeText>Ciudad</LargeText>
 							<InputSmall
-								defaultValue={myData?.address.ciudad}
+								defaultValue={myData?.address?.ciudad || ""}
 								type="text"
 								{...register("ciudad", {
 									required: "Error with city",
@@ -146,7 +146,7 @@ export function MyDataForm({ onSubmit }: any) {
 						<div>
 							<LargeText>Callé</LargeText>
 							<InputSmall
-								defaultValue={myData?.address.direccion.calle}
+								defaultValue={myData?.address?.direccion?.calle || ""}
 								type="text"
 								{...register("calle", {
 									required: "Error with street",
@@ -168,7 +168,7 @@ export function MyDataForm({ onSubmit }: any) {
 						<div>
 							<LargeText>Altura</LargeText>
 							<InputSmall
-								defaultValue={myData?.address.direccion.altura}
+								defaultValue={myData?.address.direccion.altura || ""}
 								type="number"
 								{...register("altura", {
 									required: true,
