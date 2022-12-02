@@ -7,4 +7,5 @@ export const ThanksRoot = styled.div`
 	text-align: center;
 	padding-top: 100px;
 	color: var(--azul-oscuro);
+	margin: 0 auto;
 `;

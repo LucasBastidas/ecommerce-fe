@@ -8,6 +8,7 @@ export const FooterRoot = styled.footer`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 	padding-top: 25px;
 	color: var(--celeste-claro);
 `;

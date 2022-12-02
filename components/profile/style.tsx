@@ -7,7 +7,7 @@ export const RootGral = styled.div`
 export const ProfileRoot = styled.div`
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	min-height: 100vh;
 	width: 300px;
 	margin: 0 auto;
 	padding-top: 5%;

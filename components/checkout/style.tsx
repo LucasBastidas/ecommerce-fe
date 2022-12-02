@@ -4,7 +4,7 @@ export const CheckoutRoot = styled.div`
 	padding-top: 120px;
 	display: flex;
 	text-align: center;
-	min-height: 100vh;
+	height: 100%;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;

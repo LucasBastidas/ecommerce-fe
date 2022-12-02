@@ -5,7 +5,7 @@ export const ProductDetailRoot = styled.div`
 	width: 100%;
 	flex-direction: column;
 	gap: 90px;
-	height: 80vh;
+	min-height: 100vh;
 	padding: 0 50px;
 	justify-content: center;
 	align-items: center;
