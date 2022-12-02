@@ -39,7 +39,7 @@ export function Menu({ display, closeMenu }: any) {
 		}
 	}, [myData]);
 
-	console.log({ myData });
+	// console.log({ myData });
 
 	function handleCloseSesion() {
 		router.push("/logout");
@@ -83,14 +83,14 @@ export function MenuDesktop() {
 
 	useEffect(() => {
 		if (myData) {
-			console.log("SOY MENU DESKTOP");
+			// console.log("SOY MENU DESKTOP");
 			setLogged(true);
 		} else {
 			setLogged(false);
 		}
 	}, [myData]);
 
-	console.log({ myData });
+	// console.log({ myData });
 
 	function handleCloseSesion() {
 		router.push("/logout");
