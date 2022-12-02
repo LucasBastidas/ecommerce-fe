@@ -32,7 +32,7 @@ export function Menu({ display, closeMenu }: any) {
 
 	useEffect(() => {
 		if (myData) {
-			console.log("estoy logeado");
+			// console.log("estoy logeado");
 			setLogged(true);
 		} else {
 			setLogged(false);
@@ -50,21 +50,21 @@ export function Menu({ display, closeMenu }: any) {
 			<div>
 				<div style={logged ? { display: "none" } : { display: "initial" }}>
 					<Link href="/signin">
-						<TextButton>Ingresar</TextButton>
+						<TextButton onClick={closeMenu}>Ingresar</TextButton>
 					</Link>
 				</div>
 				<br />
 				<Link href="/">
-					<TextButton>Buscar</TextButton>
+					<TextButton onClick={closeMenu}>Buscar</TextButton>
 				</Link>
 				<br />
 				<Link onClick={closeMenu} href={"/"}>
-					<TextButton>Inicio</TextButton>
+					<TextButton onClick={closeMenu}>Inicio</TextButton>
 				</Link>
 				<br />
 				<div style={logged ? { display: "initial" } : { display: "none" }}>
 					<Link href="/profile">
-						<TextButton>Mi perfil</TextButton>
+						<TextButton onClick={closeMenu}>Mi perfil</TextButton>
 					</Link>
 				</div>
 			</div>

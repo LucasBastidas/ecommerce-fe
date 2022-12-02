@@ -1,5 +1,4 @@
 import { fetchAPI } from "lib/api";
-import useSWR from "swr";
 import useSWRImmutable from "swr";
 
 export function useSearch(queryProduct: string, limit = 10, offset = 0) {
@@ -12,9 +11,9 @@ export function useSearch(queryProduct: string, limit = 10, offset = 0) {
 		fetchAPI
 	);
 	if (error) {
-		console.log(error);
+		// console.log(error);
 	}
-	console.log(data);
+	// console.log(data);
 
 	return data?.results;
 }
@@ -25,7 +24,7 @@ export function useProduct(productId: string) {
 		fetchAPI
 	);
 	if (error) {
-		console.log(error);
+		// console.log(error);
 		return { error: "no encontrado" };
 	}
 	return data?.productData;
@@ -34,9 +33,8 @@ export function useProduct(productId: string) {
 export function useDestacados() {
 	const { data, error } = useSWRImmutable(`/search?&limit=3`, fetchAPI);
 	if (error) {
-		console.log(error);
+		// console.log(error);
 	}
-	console.log(data);
 
 	return data?.results;
 }

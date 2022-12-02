@@ -112,6 +112,11 @@ export function MyDataForm({ onSubmit }: any) {
 									},
 								})}
 							></InputSmall>
+							<ErrorInputCont>
+								{errors["provincia"] && (
+									<span>Ingresa tu provincia sin numeros ni simbolos</span>
+								)}
+							</ErrorInputCont>
 						</div>
 					</label>
 					<label
@@ -134,6 +139,11 @@ export function MyDataForm({ onSubmit }: any) {
 									},
 								})}
 							></InputSmall>
+							<ErrorInputCont>
+								{errors["ciudad"] && (
+									<span>Ingresa tu ciudad sin numeros ni simbolos</span>
+								)}
+							</ErrorInputCont>
 						</div>
 					</label>
 					<label
@@ -152,10 +162,13 @@ export function MyDataForm({ onSubmit }: any) {
 									required: "Error with street",
 									pattern: {
 										value: stringAndNumbersPattern,
-										message: "Ingresa tu calle sin numeros ni simbolos",
+										message: "Ingresa una calle válida",
 									},
 								})}
 							></InputSmall>
+							<ErrorInputCont>
+								{errors["calle"] && <span>Ingresa una calle válida</span>}
+							</ErrorInputCont>
 						</div>
 					</label>
 					<label
