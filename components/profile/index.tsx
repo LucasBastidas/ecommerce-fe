@@ -21,7 +21,7 @@ export function ProfileComp() {
 		formState: { errors },
 	} = useForm();
 	const onSubmit = (data: any) => {
-		console.log(data);
+		// console.log(data);
 		const cleanData = {
 			name: data.nombre_completo,
 			tel: data.numero_telefono,

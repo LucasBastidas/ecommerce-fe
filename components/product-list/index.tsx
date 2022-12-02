@@ -9,7 +9,7 @@ import Head from "next/head";
 export function ProductListComponent({ productQuery }: any) {
 	const router = useRouter();
 	const results = useSearch(productQuery);
-	console.log(results);
+	// console.log(results);
 
 	return (
 		<div style={{ paddingTop: "var(--padding-top-search-products)" }}>

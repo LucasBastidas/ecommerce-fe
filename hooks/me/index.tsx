@@ -6,12 +6,11 @@ import {
 	MyData,
 	udpateOrConfirmMyData,
 } from "lib/api";
-import { useEffect, useState } from "react";
 
 export function useMe() {
 	const { data, error } = useSWR("/me", fetchAPI);
 	if (error) {
-		console.log(error);
+		// console.log(error);
 		return null;
 	}
 	return data;
@@ -27,7 +26,7 @@ export async function useUpdateOrConfirmMyData(params: MyData) {
 		const res = await udpateOrConfirmMyData(params);
 		return res;
 	} catch (error) {
-		console.log(error);
+		// console.log(error);
 		return null;
 	}
 }
